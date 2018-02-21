@@ -41,7 +41,21 @@ def default_func(message):
     count += 1
     message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
 
+securityMode = 0
 
 @respond_to('警備状況')
 def mention_func(message):
-    message.reply('現在警備中です') # メンション
+    if securityMode == 1
+        message.reply('現在警備中です') # メンション
+    else
+        message.reply('現在警備解除中です') # メンション
+        
+@respond_to('警備を開始')
+def mention_func(message):
+    message.reply('警備を開始します') # メンション
+    securityMode = 1
+
+@respond_to('警備を解除')
+def mention_func(message):
+    message.reply('警備を解除します') # メンション
+    securityMode = 0
