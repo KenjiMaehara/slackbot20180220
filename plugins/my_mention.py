@@ -41,7 +41,8 @@ def default_func(message):
     count += 1
     message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
 
-global securityMode = 0
+global securityMode
+securityMode = 0
 
 @respond_to('警備状況')
 def mention_func(message):
