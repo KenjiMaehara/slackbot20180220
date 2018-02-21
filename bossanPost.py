@@ -2,7 +2,7 @@
 
 from slacker import Slacker
 import slackbot_settings
-from plugins import my_mention
+from plugins import *
 
 if __name__ == '__main__':
     slack = Slacker(slackbot_settings.API_TOKEN)
