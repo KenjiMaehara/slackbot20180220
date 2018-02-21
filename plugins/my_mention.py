@@ -32,4 +32,11 @@ def listen_func(message):
 def cool_func(message):
     message.reply('ありがとう。スタンプ押しとくね')     # メンション
     message.react('+1')     # リアクション
-    
+
+count = 0
+
+@default_reply()
+def default_func(message):
+    global count        # 外で定義した変数の値を変えられるようにする
+    count += 1
+    message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
