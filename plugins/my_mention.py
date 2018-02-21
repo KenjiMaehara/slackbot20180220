@@ -45,11 +45,11 @@ securityMode = 0
 
 @respond_to('警備状況')
 def mention_func(message):
-    if securityMode == 1
+    if securityMode == 1:
         message.reply('現在警備中です') # メンション
-    else
+    else:
         message.reply('現在警備解除中です') # メンション
-        
+
 @respond_to('警備を開始')
 def mention_func(message):
     message.reply('警備を開始します') # メンション
