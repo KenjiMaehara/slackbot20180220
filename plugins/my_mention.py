@@ -27,3 +27,9 @@ def mention_func(message):
 def listen_func(message):
     message.send('誰かがリッスンと投稿したようだ')      # ただの投稿
     message.reply('君だね？')                           # メンション
+
+@respond_to('かっこいい')
+def cool_func(message):
+    message.reply('ありがとう。スタンプ押しとくね')     # メンション
+    message.react('+1')     # リアクション
+    
