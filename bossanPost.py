@@ -5,4 +5,4 @@ import slackbot_settings
 
 if __name__ == '__main__':
     slack = Slacker(slackbot_settings.API_TOKEN)
-    slack.chat.post_message('bossan_test','こんにちわー')
+    slack.chat.post_message('general','こんにちわー')
