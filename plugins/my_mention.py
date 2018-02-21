@@ -53,9 +53,11 @@ def mention_func(message):
 @respond_to('警備を開始')
 def mention_func(message):
     message.reply('警備を開始します') # メンション
+    global securityMode
     securityMode = 1
 
 @respond_to('警備を解除')
 def mention_func(message):
     message.reply('警備を解除します') # メンション
+    global securityMode
     securityMode = 0
