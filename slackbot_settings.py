@@ -7,4 +7,4 @@ API_TOKEN = "xoxb-317171637541-qwMh1rMDqPJaSPUbdukK08k9"
 DEFAULT_REPLY = "何言ってんだこいつ"
 
 # プラグインスクリプトを置いてあるサブディレクトリ名のリスト
-PLUGINGS = ['plugings']
+PLUGINGS = ['plugins']
