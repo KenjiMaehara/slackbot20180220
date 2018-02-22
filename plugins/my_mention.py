@@ -96,7 +96,7 @@ def hello():
     global timeCountSecurityOn
 
     if timeCountSecurityOn > -1:
-            timeCountSecurityOn++
+            timeCountSecurityOn+=1
             if timeCountSecurityOn > 300:
                 slack = Slacker(slackbot_settings.API_TOKEN)
                 slack.chat.post_message('general','現在警備中であります　特に異常なし　(`・ω・́)ゝ　')
