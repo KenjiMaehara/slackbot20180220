@@ -46,8 +46,6 @@ def default_func(message):
     count += 1
     message.reply('%d 回目のデフォルトの返事です' % count)  # メンション
 
-global securityMode
-securityMode = 0
 
 @respond_to('警備状況')
 @respond_to('警備の状況')
@@ -55,7 +53,7 @@ securityMode = 0
 @respond_to('防犯の状況')
 @respond_to('状況')
 def mention_func(message):
-    if securityMode == 1:
+    if timeCountSecurityOn > -1:
         message.reply('現在警備中です') # メンション
     else:
         message.reply('現在警備解除中です') # メンション
@@ -69,9 +67,7 @@ def mention_func(message):
     #message.send('警備を開始します')
     slack = Slacker(slackbot_settings.API_TOKEN)
     slack.chat.post_message('general','防犯を開始します。')
-
-    global securityMode
-    securityMode = 1
+    global timeCountSecurityOn = 0
 
 @respond_to('警備を解除')
 @respond_to('警備解除')
@@ -81,8 +77,8 @@ def mention_func(message):
     message.reply('警備を解除します') # メンション
     slack = Slacker(slackbot_settings.API_TOKEN)
     slack.chat.post_message('general','防犯を解除します。')
-    global securityMode
-    securityMode = 0
+    global timeCountSecurityOn = -1
+
 
 @respond_to('使い方')
 def mention_func(message):
@@ -93,16 +89,16 @@ def mention_func(message):
 
 
 
-timeCountSecurityOn = 0
+timeCountSecurityOn = -1
 
 def hello():
 
-    if timeCountSecurityOn > -1 and timeCountSecurityOn > 300:
-        global timeCountSecurityOn++;
-        if securityMode == 1:
-            slack = Slacker(slackbot_settings.API_TOKEN)
-            slack.chat.post_message('general','現在警備中であります　特に異常なし　(`・ω・́)ゝ　')
-            global timeCountSecurityOn = 0
+    if timeCountSecurityOn > -1:
+            global timeCountSecurityOn++;
+            if timeCountSecurityOn > 300:
+                slack = Slacker(slackbot_settings.API_TOKEN)
+                slack.chat.post_message('general','現在警備中であります　特に異常なし　(`・ω・́)ゝ　')
+                global timeCountSecurityOn = 0
     else:
         global timeCountSecurityOn = -1
 
