@@ -84,5 +84,7 @@ def mention_func(message):
 
 @respond_to('使い方')
 def mention_func(message):
-    message.reply('警備を開始する場合は　：　”警備開始して”と言って下さい。')
-    message.reply('警備を解除する場合は　：　”警備解除して”と言って下さい。')
+    message.reply('”警備開始して”')
+    message.reply('”警備解除して”')
+    message.reply('”状況を教えて”')
+    message.reply('このように話しかけてみてください')
