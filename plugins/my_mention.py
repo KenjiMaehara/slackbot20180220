@@ -99,7 +99,3 @@ def hello():
     print("[%s] helohelo!!" % threading.currentThread().getName())
     t=threading.Timer(1,hello)
     t.start()
-
-if __name__=='__main__':
-    t=threading.Thread(target=hello)
-    t.start()
