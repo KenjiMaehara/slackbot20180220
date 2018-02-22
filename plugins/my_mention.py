@@ -7,6 +7,7 @@ from slackbot.bot import default_reply  # 該当する応答がない場合に�
 from slacker import Slacker
 import slackbot_settings
 import time
+import threading
 
 # @respond_to('string')     bot宛のメッセージ
 #                           stringは正規表現が可能 「r'string'」
@@ -92,14 +93,13 @@ def mention_func(message):
 
 
 
-def task():
-    #print(time.time())
-    if securityMode == 1:
-        slack = Slacker(slackbot_settings.API_TOKEN)
-        slack.chat.post_message('general','防犯中')
 
+def hello():
+    print("現在のスレッドの数: " + str(threading.activeCount()))
+    print("[%s] helohelo!!" % threading.currentThread().getName())
+    t=threading.Timer(1,hello)
+    t.start()
 
-
-while True:
-    task()
-    time.sleep(5)
+if __name__=='__main__':
+    t=threading.Thread(target=hello)
+    t.start()
