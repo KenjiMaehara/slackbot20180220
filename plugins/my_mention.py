@@ -101,5 +101,5 @@ def hello():
 
     print("現在のスレッドの数: " + str(threading.activeCount()))
     print("[%s] helohelo!!" % threading.currentThread().getName())
-    t=threading.Timer(300,hello)
+    t=threading.Timer(60,hello)
     t.start()
