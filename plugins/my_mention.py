@@ -93,13 +93,20 @@ def mention_func(message):
 
 
 
+timeCountSecurityOn = 0
 
 def hello():
-    if securityMode == 1:
-        slack = Slacker(slackbot_settings.API_TOKEN)
-        slack.chat.post_message('general','現在警備中であります　特に異常なし　(`・ω・́)ゝ　')
+
+    if timeCountSecurityOn > -1 and timeCountSecurityOn > 300:
+        global timeCountSecurityOn++;
+        if securityMode == 1:
+            slack = Slacker(slackbot_settings.API_TOKEN)
+            slack.chat.post_message('general','現在警備中であります　特に異常なし　(`・ω・́)ゝ　')
+            global timeCountSecurityOn = 0
+    else:
+        global timeCountSecurityOn = -1
 
     print("現在のスレッドの数: " + str(threading.activeCount()))
     print("[%s] helohelo!!" % threading.currentThread().getName())
-    t=threading.Timer(30,hello)
+    t=threading.Timer(1,hello)
     t.start()
