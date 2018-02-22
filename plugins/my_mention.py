@@ -6,6 +6,7 @@ from slackbot.bot import default_reply  # 該当する応答がない場合に�
 
 from slacker import Slacker
 import slackbot_settings
+import time
 
 # @respond_to('string')     bot宛のメッセージ
 #                           stringは正規表現が可能 「r'string'」
@@ -88,3 +89,17 @@ def mention_func(message):
     message.reply('”警備解除して”')
     message.reply('”状況を教えて”')
     message.reply('このように話しかけてみてください')
+
+
+
+def task():
+    #print(time.time())
+    if securityMode == 1:
+        slack = Slacker(slackbot_settings.API_TOKEN)
+        slack.chat.post_message('general','防犯中')
+
+
+
+while True:
+    task()
+    time.sleep(5)
