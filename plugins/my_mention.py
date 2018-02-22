@@ -54,13 +54,17 @@ def mention_func(message):
 @respond_to('警備を開始')
 def mention_func(message):
     message.reply('警備を開始します') # メンション
-    message.send('警備を開始します')
+    #message.send('警備を開始します')
+    slack = Slacker(slackbot_settings.API_TOKEN)
+    slack.chat.post_message('general','操作報告¥n防犯を開始します。')
+
     global securityMode
     securityMode = 1
 
 @respond_to('警備を解除')
 def mention_func(message):
     message.reply('警備を解除します') # メンション
-    message.send('警備を解除します') # メンション
+    slack = Slacker(slackbot_settings.API_TOKEN)
+    slack.chat.post_message('general','操作報告¥n防犯を解除します。')
     global securityMode
     securityMode = 0
