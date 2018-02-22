@@ -67,7 +67,8 @@ def mention_func(message):
     #message.send('警備を開始します')
     slack = Slacker(slackbot_settings.API_TOKEN)
     slack.chat.post_message('general','防犯を開始します。')
-    global timeCountSecurityOn = 0
+    global timeCountSecurityOn
+    timeCountSecurityOn = 0
 
 @respond_to('警備を解除')
 @respond_to('警備解除')
@@ -77,8 +78,8 @@ def mention_func(message):
     message.reply('警備を解除します') # メンション
     slack = Slacker(slackbot_settings.API_TOKEN)
     slack.chat.post_message('general','防犯を解除します。')
-    global timeCountSecurityOn = -1
-
+    global timeCountSecurityOn
+    timeCountSecurityOn = -1
 
 @respond_to('使い方')
 def mention_func(message):
@@ -92,15 +93,16 @@ def mention_func(message):
 timeCountSecurityOn = -1
 
 def hello():
+    global timeCountSecurityOn
 
     if timeCountSecurityOn > -1:
-            global timeCountSecurityOn++;
+            timeCountSecurityOn++
             if timeCountSecurityOn > 300:
                 slack = Slacker(slackbot_settings.API_TOKEN)
                 slack.chat.post_message('general','現在警備中であります　特に異常なし　(`・ω・́)ゝ　')
-                global timeCountSecurityOn = 0
+                timeCountSecurityOn = 0
     else:
-        global timeCountSecurityOn = -1
+        timeCountSecurityOn = -1
 
     print("現在のスレッドの数: " + str(threading.activeCount()))
     print("[%s] helohelo!!" % threading.currentThread().getName())
