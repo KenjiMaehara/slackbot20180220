@@ -48,6 +48,10 @@ global securityMode
 securityMode = 0
 
 @respond_to('警備状況')
+@respond_to('警備の状況')
+@respond_to('防犯状況')
+@respond_to('防犯の状況')
+@respond_to('状況')
 def mention_func(message):
     if securityMode == 1:
         message.reply('現在警備中です') # メンション
@@ -55,6 +59,9 @@ def mention_func(message):
         message.reply('現在警備解除中です') # メンション
 
 @respond_to('警備を開始')
+@respond_to('警備開始')
+@respond_to('防犯を開始')
+@respond_to('防犯開始')
 def mention_func(message):
     message.reply('警備を開始します') # メンション
     #message.send('警備を開始します')
@@ -65,6 +72,9 @@ def mention_func(message):
     securityMode = 1
 
 @respond_to('警備を解除')
+@respond_to('警備解除')
+@respond_to('防犯を解除')
+@respond_to('防犯解除')
 def mention_func(message):
     message.reply('警備を解除します') # メンション
     slack = Slacker(slackbot_settings.API_TOKEN)
