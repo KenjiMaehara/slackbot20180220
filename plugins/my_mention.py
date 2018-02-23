@@ -111,13 +111,13 @@ def hello():
     # GPIO初期化
     w.wiringPiSetupSys()
     # GPIOを出力モード（1）に設定
-    w.pinMode(button_pin,0)
+    w.pinMode(buttonPin,0)
     # 端子に何も接続されていない場合の状態を設定
     # 3.3Vの場合には「2」（プルアップ）
     # 0Vの場合は「1」と設定する（プルダウン）
-    w.pullUpDnControl(button_pin,2)
+    w.pullUpDnControl(buttonPin,2)
 
-    if( w.digitalRead(button_pin) == 0 ):
+    if( w.digitalRead(buttonPin) == 0 ):
         print ("Switch ON")
     else:
         print ("Switch OFF")
