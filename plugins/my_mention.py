@@ -126,7 +126,7 @@ def hello():
         print ("Switch OFF ACTIVE ACTIVE")
         sensorCheck = 1
 
-    if timeCountSecurityOn > -1 and sensorCheckOld not sensorCheck and sensorCheck == 1:
+    if (timeCountSecurityOn > -1) and (not sensorCheckOld == sensorCheck) and (sensorCheck == 1):
         slack = Slacker(slackbot_settings.API_TOKEN)
         slack.chat.post_message('general','センサー検知発生')
 
