@@ -109,7 +109,7 @@ def hello():
 
     buttonPin = 4
     # GPIO初期化
-    w.wiringPiSetupSys()
+    w.wiringPiSetupGpio()
     # GPIOを出力モード（1）に設定
     w.pinMode(buttonPin,0)
     # 端子に何も接続されていない場合の状態を設定
