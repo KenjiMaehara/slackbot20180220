@@ -9,7 +9,7 @@ import slackbot_settings
 import time
 import threading
 # GPIOを制御するライブラリ
-import wiringpi
+import wiringpi2 as w
 
 # @respond_to('string')     bot宛のメッセージ
 #                           stringは正規表現が可能 「r'string'」
@@ -109,15 +109,15 @@ def hello():
 
     buttonPin = 4
     # GPIO初期化
-    wiringpi.wiringPiSetupGpio()
+    w.wiringPiSetupGpio()
     # GPIOを出力モード（1）に設定
-    wiringpi.pinMode( button_pin, 0 )
+    w.pinMode(button_pin,0)
     # 端子に何も接続されていない場合の状態を設定
     # 3.3Vの場合には「2」（プルアップ）
     # 0Vの場合は「1」と設定する（プルダウン）
-    wiringpi.pullUpDnControl( button_pin, 2 )
+    w.pullUpDnControl(button_pin,2)
 
-    if( wiringpi.digitalRead(button_pin) == 0 ):
+    if( w.digitalRead(button_pin) == 0 ):
         print ("Switch ON")
     else:
         print ("Switch OFF")
