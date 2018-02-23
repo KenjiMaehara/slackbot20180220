@@ -119,6 +119,9 @@ def hello():
     # 0Vの場合は「1」と設定する（プルダウン）
     w.pullUpDnControl(buttonPin,2)
 
+    global sensorCheck
+    global sensorCheckOld 
+
     if( w.digitalRead(buttonPin) == 0 ):
         print ("Switch ON")
         sensorCheck = 0
