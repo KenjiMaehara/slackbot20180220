@@ -8,6 +8,8 @@ from slacker import Slacker
 import slackbot_settings
 import time
 import threading
+# GPIOを制御するライブラリ
+import wiringpi
 
 # @respond_to('string')     bot宛のメッセージ
 #                           stringは正規表現が可能 「r'string'」
