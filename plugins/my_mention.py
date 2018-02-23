@@ -93,6 +93,8 @@ def mention_func(message):
 
 
 timeCountSecurityOn = -1
+sensorCheck = 0
+sensorCheckOld = 0
 
 def hello():
     global timeCountSecurityOn
@@ -119,9 +121,16 @@ def hello():
 
     if( w.digitalRead(buttonPin) == 0 ):
         print ("Switch ON")
+        sensorCheck = 0
     else:
-        print ("Switch OFF")
+        print ("Switch OFF ACTIVE ACTIVE")
+        sensorCheck = 1
 
+    if (timeCountSecurityOn > -1) and (sensorCheckOld not sensorCheck) and (sensorCheck == 1):
+        slack = Slacker(slackbot_settings.API_TOKEN)
+        slack.chat.post_message('general','センサー検知発生')
+
+    sensorCheckOld = sensorCheck
 
 
     print("現在のスレッドの数: " + str(threading.activeCount()))
